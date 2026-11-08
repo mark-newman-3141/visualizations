@@ -20,6 +20,8 @@ function CreateGraphStructure(myCanvas, XAxis, YAxis)
 		GraphRight: 0,
 		GraphWidth: 0,
 		GraphHeight: 0,
+		GridColor: "#DDDDDD",
+		AxesColor: "black",
 		YAxis_XCross: 0,
 		GraphTopMargin: 30,
 		GraphBottomMargin: 40,
@@ -498,7 +500,7 @@ function ShowGraphTitle(WhichGraph)
 {
 	var Text = WhichGraph.Title;
 	
-	WhichGraph.ctx.fillStyle = "black";
+	WhichGraph.ctx.fillStyle = WhichGraph.AxesColor;
 	WhichGraph.ctx.font = WhichGraph.TitleHeight + "pt " + WhichGraph.Font;
 	WhichGraph.ctx.fillText(Text, WhichGraph.Canvas.width / 2 - WhichGraph.ctx.measureText(Text).width / 2, WhichGraph.TitleHeight + 10);
 }
@@ -530,7 +532,7 @@ function DrawXAxes(WhichGraph)
 	
 	var Text;
 	
-	WhichGraph.ctx.strokeStyle = "#000000";
+	WhichGraph.ctx.strokeStyle = WhichGraph.AxesColor;
 	WhichGraph.ctx.lineWidth = 1;
 
 	WhichGraph.ctx.beginPath();
@@ -542,7 +544,8 @@ function DrawXAxes(WhichGraph)
 	{
 		//if (XTick != 0)
 		//{
-			WhichGraph.ctx.strokeStyle = "#DDDDDD";
+			WhichGraph.ctx.strokeStyle = WhichGraph.GridColor;
+			console.log(WhichGraph.GridColor)
 			WhichGraph.ctx.lineWidth = 1;
 			
 			if (WhichGraph.XGrid == true)
@@ -553,8 +556,8 @@ function DrawXAxes(WhichGraph)
 				WhichGraph.ctx.stroke();
 			}
 
-			WhichGraph.ctx.strokeStyle = "#000000";
-			WhichGraph.ctx.fillStyle = "#000000";
+			WhichGraph.ctx.strokeStyle = WhichGraph.AxesColor;
+			WhichGraph.ctx.fillStyle = WhichGraph.AxesColor;
 			WhichGraph.ctx.lineWidth = 1;		
 			
 			WhichGraph.ctx.beginPath();
@@ -600,7 +603,7 @@ function DrawYAxes(WhichGraph)
 	var X;
 	var Y;
 	
-	WhichGraph.ctx.strokeStyle = "#000000";
+	WhichGraph.ctx.strokeStyle = WhichGraph.AxesColor;
 	WhichGraph.ctx.lineWidth = 1;
 
 	WhichGraph.ctx.beginPath();
@@ -612,7 +615,7 @@ function DrawYAxes(WhichGraph)
 	{
 		if (YTick != 0)
 		{
-			WhichGraph.ctx.strokeStyle = "#DDDDDD";
+			WhichGraph.ctx.strokeStyle = WhichGraph.GridColor;
 			WhichGraph.ctx.lineWidth = 1;
 			
 			if (WhichGraph.YGrid == true)
@@ -623,7 +626,7 @@ function DrawYAxes(WhichGraph)
 				WhichGraph.ctx.stroke();
 			}
 			
-			WhichGraph.ctx.strokeStyle = "#000000";
+			WhichGraph.ctx.strokeStyle = WhichGraph.AxesColor;
 			WhichGraph.ctx.lineWidth = 1;		
 			
 			
@@ -847,4 +850,3 @@ function arrow(ctx, x, y, angle, length, scale)
 	ctx.rotate(angle);
 	ctx.translate(-x, -y);
 }
-
