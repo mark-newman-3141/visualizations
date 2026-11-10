@@ -545,7 +545,6 @@ function DrawXAxes(WhichGraph)
 		//if (XTick != 0)
 		//{
 			WhichGraph.ctx.strokeStyle = WhichGraph.GridColor;
-			console.log(WhichGraph.GridColor)
 			WhichGraph.ctx.lineWidth = 1;
 			
 			if (WhichGraph.XGrid == true)
